@@ -21,7 +21,7 @@ const fetcher = async (ids?: string[]) => {
     return data;
 }
 
-const getMessages = (ids?: string[]) => {
+const GetMessages = (ids?: string[]) => {
 
     const { data, error } = useSWR([ ids ], fetcher);
 
@@ -40,7 +40,7 @@ export const ChannelBoard = () => {
     const isGuildSelected = router.route === '/channels/[id]' ? true  : false;
 
 
-    const { messages, isLoading, isError } = getMessages(viewChannels?.map(ViewChannel => ViewChannel.id));
+    const { messages, isLoading, isError } = GetMessages(viewChannels?.map(ViewChannel => ViewChannel.id));
 
     if (isLoading && viewChannels != undefined) return <h2>Loading...</h2>
     if (isError && viewChannels != undefined) return <h2>An error has occurred</h2>
