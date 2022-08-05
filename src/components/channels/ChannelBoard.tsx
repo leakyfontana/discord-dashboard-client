@@ -8,7 +8,7 @@ import { ViewChannel } from "./ViewChannel";
 import { fetchChannelMessages } from "../../utils/api";
 import useSWR from "swr";
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const fetcher = async (ids?: string[]) => {
     let data: any = [];
