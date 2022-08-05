@@ -2,11 +2,12 @@ import type { NextPage } from 'next'
 import React from 'react';
 import { FaDiscord} from 'react-icons/fa';
 
+const API_URL = process.env.API_URL;
 
 const Home: NextPage = () => {
 
   const handleLogin = () => {
-    window.location.href = 'http://localhost:3000/api/auth/discord'
+    window.location.href = `${API_URL}/auth/discord`
   };
 
   return (

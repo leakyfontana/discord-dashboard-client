@@ -9,8 +9,6 @@ import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
 import { fetchChannelMessages, postChannelMessage } from "../../utils/api";
 import { toast, ToastContainer } from "react-toastify";
 
-const API_URL = 'http://localhost:3000/api';
-
 type Props = {
     channel: Channel
     messages: Message[] | undefined

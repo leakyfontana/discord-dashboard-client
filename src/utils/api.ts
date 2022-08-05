@@ -3,7 +3,7 @@ import axios from "axios";
 import { validateCookies } from "./helpers";
 import { Channel, Guild, Message } from "./types";
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = process.env.API_URL;
 
 export const fetchMutualGuilds = async (context: GetServerSidePropsContext) => {
   const headers = validateCookies(context);
