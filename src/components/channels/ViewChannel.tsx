@@ -58,6 +58,7 @@ export const ViewChannel: FC<Props> = ({ channel, messages }) => {
                                 height={50}
                                 width={50}
                                 layout='fixed'
+                                alt={`${message.author.username}'s avatar`}
                             />
                         </div>
                         <div className='flex flex-col w-9/12 gap-2'>

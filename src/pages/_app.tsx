@@ -20,4 +20,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout<any>) {
   );
 }
 
+export { reportWebVitals } from 'next-axiom';
+
 export default MyApp

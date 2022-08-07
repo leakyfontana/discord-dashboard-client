@@ -5,5 +5,8 @@ const nextConfig = {
     domains: ['cdn.discordapp.com']
   }
 }
+const { withAxiom } = require('next-axiom');
 
-module.exports = nextConfig
+module.exports = //withAxiom({
+  nextConfig
+//})

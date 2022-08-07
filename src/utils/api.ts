@@ -2,6 +2,7 @@ import { GetServerSidePropsContext, GetStaticPropsContext } from "next";
 import axios from "axios";
 import { validateCookies } from "./helpers";
 import { Channel, Guild, Message } from "./types";
+import { log } from 'next-axiom'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -24,6 +25,7 @@ export const fetchMutualGuilds = async (context: GetServerSidePropsContext) => {
 export const fetchGuild = async (ctx: GetServerSidePropsContext) => {
   const headers = validateCookies(ctx);
   console.log(headers);
+  if (!headers) log.debug('headers invalid 28')
   if (!headers) return { redirect: { destination: '/' } };
   try {
     const { data: guild } = await axios.get<Guild>(
@@ -48,6 +50,7 @@ export const fetchValidGuild = (id: string, headers: HeadersInit) => {
 
 export const fetchChannels = async (ctx: GetServerSidePropsContext) => {
   const headers = validateCookies(ctx);
+  if (!headers) log.debug('headers invalid 53')
   if (!headers) return { redirect: { destination: '/' } };
   try {
     const { data: channels } = await axios.get<Channel[]>(
@@ -66,6 +69,7 @@ export const fetchChannels = async (ctx: GetServerSidePropsContext) => {
 
 export const fetchChannelsAndGuilds = async (ctx: GetServerSidePropsContext) => {
   const headers = validateCookies(ctx);
+  if (!headers) log.debug('headers invalid 72')
   if (!headers) return { redirect: { destination: '/' } };
   try {
     const { data: channels } = await axios.get<Channel[]>(
@@ -88,6 +92,7 @@ export const fetchChannelsAndGuilds = async (ctx: GetServerSidePropsContext) => 
 export const fetchChannelMessages = async (ctx: GetServerSidePropsContext) => {
   try {
     const headers = validateCookies(ctx);
+    if (!headers) log.debug('headers invalid 95')
     if (!headers) return { redirect: { destination: '/' } };
     const { data: messages } = await axios.get<Message[]>(`${API_URL}/channels/${ctx.query.id}/messages`, {
       headers,
@@ -116,31 +121,3 @@ export const postChannelMessage = async (channelId: string) => {
     return { redirect: { destination: '/menu' } };
   }
 }
-
-
-
-// export const fetchGuild = async (ctx: GetServerSidePropsContext) => {
-//   const headers = validateCookies(ctx);
-//   console.log(headers);
-//   if (!headers) return { redirect: { destination: '/' } };
-//   try {
-//     const { data: guild } = await axios.get<Guild>(
-//       `${API_URL}/guilds/${ctx.query.id}`, 
-//       {
-//         headers,
-//       }
-//     );
-//     console.log(guild);
-//     return { props: { guild } };
-//   } catch (err) {
-//     console.log(err);
-//     return { redirect: { destinations: '/' } };
-//   }
-// }
-
-// export const fetchValidGuild = async (id: string | string[], headers: HeadersInit) => {
-//   console.log(headers);
-//   return fetch(`${API_URL}/guilds/${id}/permissions`, {
-//     headers,
-//   });
-// }
