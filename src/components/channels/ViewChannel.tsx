@@ -47,7 +47,7 @@ export const ViewChannel: FC<Props> = ({ channel, messages }) => {
                     <AiFillCloseCircle size={30} onClick={handleRemove}/>
                 </button>
             </div>
-            <div className='flex flex-col gap-3 mt-auto overflow-scroll'>
+            <div className='flex flex-col gap-3 py-3 mt-auto overflow-scroll'>
                 {messages?.map((message: Message) => {
                     return (
                     <div key={message.id} className='flex flex-row items-center justify-center'>
@@ -72,7 +72,7 @@ export const ViewChannel: FC<Props> = ({ channel, messages }) => {
                     )
                 })}
             </div>
-            <div className='flex flex-row w-auto gap-3 p-2 bg-discord-grey'>
+            {/* <div className='flex flex-row w-auto gap-3 p-2 bg-discord-grey'>
                 <input 
                     className='w-full p-1 text-black rounded-md bg-discord-dark-grey' 
                     type='text' 
@@ -87,7 +87,7 @@ export const ViewChannel: FC<Props> = ({ channel, messages }) => {
                         onClick={handleSubmit}
                     />
                 </button>
-            </div>
+            </div> */}
         </>
     )
 }

@@ -24,12 +24,12 @@ const DashboardPage: NextPageWithLayout<Props> = ({ guilds, channels }) => {
     }, []);
 
     const { id } = router.query;
-    const currentGuild = guilds[0];
+    const currentGuildIdx = guilds.findIndex((guild) => guild.id === id);
 
 
     return (
         <div className='flex flex-col items-start h-screen gap-3 p-4 ml-24 overflow-scroll text-white w-60 bg-slate-800'>
-            <h2 className='text-xl'>{currentGuild?.name}</h2>
+            <h2 className='text-xl'>{guilds[currentGuildIdx].name}</h2>
             <hr className='w-full divide-white'/>
             {channels?.filter(channel => channel.type === 4 && channel.name !== "Voice Channels").map((channel) => (
                 <div className='w-full cursor-pointer' key={channel.id}>
